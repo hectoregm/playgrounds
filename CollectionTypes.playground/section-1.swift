@@ -53,4 +53,56 @@ var sixDoubles = threeDoubles + anotherThreeDoubles
 
 // Dictionary
 
-var airports: [String]
+var airports: [String:String] = ["TYO": "Tokyo", "DUB": "Dublin"]
+
+println("The airports dictionary contains \(airports.count) items.")
+
+if airports.isEmpty {
+  println("the airports dictionary is empty.")
+} else {
+  println("The airports dictionary is not empty.")
+}
+
+airports["LHR"] = "London Heathrow"
+
+if let oldValue = airports.updateValue("Dublin International", forKey: "DUB") {
+  println("The old value for DUB was \(oldValue)")
+}
+
+if let airportName = airports["DUB"] {
+  println("The name of the aiport is \(airportName)")
+} else {
+  println("That airport is not in the airports dictionary.")
+}
+
+airports["APL"] = "Apple International"
+
+airports["APL"] = nil
+
+if let removedValue = airports.removeValueForKey("DUB") {
+  println("The removed airport's name is \(removedValue).")
+} else {
+  println("The airports dictionary does not contain a value for DUB.")
+}
+
+for (airportCode, airportName) in airports {
+  println("\(airportCode): \(airportName)")
+}
+
+for airportCode in airports.keys {
+  println("Airport code: \(airportCode)")
+}
+
+for airportName in airports.values {
+  println("Airport name: \(airportName)")
+}
+
+let airportCodes = [String](airports.keys)
+
+let aiportNames = [String](airports.values)
+
+var namesOfIntegers = [Int: String]()
+
+namesOfIntegers[16] = "sixteen"
+
+namesOfIntegers = [:]
